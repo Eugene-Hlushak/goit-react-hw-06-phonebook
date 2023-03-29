@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { showFilteredContacts } from 'redux/actions';
+import { showContacts } from 'redux/actions';
 import { FilterLabel, FormInput } from './PhoneBook.styled';
 
 export default function Filter() {
   const dispatch = useDispatch();
 
-  const filteredContacts = e => dispatch(showFilteredContacts(e.target.value));
+  const filteredContacts = e => dispatch(showContacts(e.target.value));
 
   return (
     <FilterLabel>
