@@ -3,6 +3,7 @@ import { getContacts, getStatusFilter } from 'redux/selectors';
 import ContactListItem from 'components/Phonebook/ContactListItem';
 
 const getVisibleContacts = (contacts, filter) => {
+  console.log(filter);
   if (!filter) return contacts;
 
   return contacts.filter(contact =>

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { showContacts } from 'redux/actions';
+import { showContacts } from 'redux/filterSlice';
 import { FilterLabel, FormInput } from './PhoneBook.styled';
 
 export default function Filter() {

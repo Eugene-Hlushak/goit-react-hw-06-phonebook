@@ -1,4 +1,4 @@
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contactsSlice';
 import { useDispatch } from 'react-redux';
 import { AddContactForm, FormInput, FormLabel } from './PhoneBook.styled';
 
