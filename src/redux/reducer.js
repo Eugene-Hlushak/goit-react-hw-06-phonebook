@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux';
+import { createReducer } from '@reduxjs/toolkit';
+import { addContact, deleteContact, showContacts } from './actions';
 import { nanoid } from 'nanoid';
 import { statusFilter } from './constants';
 
@@ -9,40 +10,57 @@ const contactsInitialState = [
   { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const contactsReducer = (state = contactsInitialState, { type, payload }) => {
-  switch (type) {
-    case 'contacts/addContact':
-      if (state.find(({ name }) => name === payload.contact.name)) {
-        alert(`${payload.contact.name} is already in contacts`);
-        return;
-      }
-      return [...state, payload.contact];
+export const contactsReducer = createReducer(contactsInitialState, {
+  [addContact]: (state, { payload }) => {
+    if (
+      state.find(
+        contact =>
+          contact.name.toLowerCase() === payload.contact.name.toLowerCase()
+      )
+    ) {
+      alert(`${payload.contact.name} is already in contacts`);
+      return;
+    }
+    return [...state, payload.contact];
+  },
 
-    case 'contacts/deleteContact':
-      return state.filter(contact => contact.id !== payload.id);
+  [deleteContact]: (state, { payload }) =>
+    state.filter(contact => contact.id !== payload.id),
+});
 
-    default:
-      return state;
-  }
-};
+// export const contactsReducer = createReducer(contactsInitialState, builder => {
+//   builder
+//     .addCase(addContact, (state, { payload }) => {
+//       if (
+//         state.find(
+//           contact =>
+//             contact.name.toLowerCase() === payload.contact.name.toLowerCase()
+//         )
+//       ) {
+//         alert(`${payload.contact.name} is already in contacts`);
+//         return;
+//       }
+//       return [...state, payload.contact];
+//     })
+
+//     .addCase(deleteContact, (state, { payload }) =>
+//       state.filter(contact => contact.id !== payload.id)
+//     );
+// });
 
 const filterInitialState = statusFilter.filter;
 
-const filterReducer = (state = filterInitialState, { type, payload }) => {
-  console.log('payload ---.', payload, 'state --->', state);
-  switch (type) {
-    case 'filter/showContacts':
-      return {
-        ...state,
-        status: payload.value,
-      };
-
-    default:
-      return state;
-  }
-};
-
-export const rootReducer = combineReducers({
-  contacts: contactsReducer,
-  filter: filterReducer,
+export const filterReducer = createReducer(filterInitialState, {
+  [showContacts]: (state, { payload }) => {
+    return {
+      ...state,
+      status: payload,
+    };
+  },
 });
+
+// export const filterReducer = createReducer(filterInitialState, builder => {
+//   builder.addCase(showContacts, (state, { payload }) => {
+//     return { ...state, status: payload };
+//   });
+// });
