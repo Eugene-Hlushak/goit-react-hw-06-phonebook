@@ -1,14 +1,26 @@
 import { addContact } from 'redux/contactsSlice';
-import { useDispatch } from 'react-redux';
+
+import { getContacts } from 'redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { AddContactForm, FormInput, FormLabel } from './PhoneBook.styled';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const saveNewContact = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const { name, number } = form.elements;
+    const checkContact = contacts.find(
+      contact => contact.name.toLowerCase() === name.value.toLowerCase()
+    );
+
+    if (checkContact) {
+      alert(`${name.value} is already in contacts`);
+      return;
+    }
+
     dispatch(addContact(name.value, number.value));
     form.reset();
   };

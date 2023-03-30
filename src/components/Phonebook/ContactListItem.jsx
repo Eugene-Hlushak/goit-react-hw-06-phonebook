@@ -19,5 +19,9 @@ export default function ContactListItem({ contact }) {
 }
 
 ContactListItem.propTypes = {
-  contact: PropTypes.shape().isRequired,
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };
