@@ -2,7 +2,7 @@ import { addContact } from 'redux/contactsSlice';
 
 import { getContacts } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddContactForm, FormInput, FormLabel } from './PhoneBook.styled';
+import { AddContactForm, FormInput, FormLabel } from './ContactForm.styled';
 
 export default function ContactForm() {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { showContacts } from 'redux/filterSlice';
-import { FilterLabel, FormInput } from './PhoneBook.styled';
+import { FilterLabel, FilterInput } from './Filter.styled';
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ export default function Filter() {
   return (
     <FilterLabel>
       Find contact by name
-      <FormInput
+      <FilterInput
         type="text"
         name="filter"
         onChange={e => dispatch(showContacts(e.target.value))}

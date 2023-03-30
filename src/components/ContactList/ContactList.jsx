@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getContacts, getStatusFilter } from 'redux/selectors';
-import ContactListItem from 'components/Phonebook/ContactListItem';
+import ContactListItem from 'components/ContactList/ContactListItem';
 
 const getVisibleContacts = (contacts, filter) => {
   if (!filter) return contacts;

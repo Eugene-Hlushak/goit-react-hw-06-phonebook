@@ -1,9 +1,7 @@
-import { GlobalStyle } from './GlobalStyle';
-import { Title, Container } from './Phonebook/PhoneBook.styled';
-
-import ContactForm from './Phonebook/ContactForm';
-import Filter from './Phonebook/Filter';
-import ContactList from './Phonebook/ContactList';
+import { GlobalStyle, Container, Title } from './GlobalStyle';
+import ContactForm from './ContactForm/ContactForm';
+import Filter from './Filter/Filter';
+import ContactList from './ContactList/ContactList';
 
 export function App() {
   return (

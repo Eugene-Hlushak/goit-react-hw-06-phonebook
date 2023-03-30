@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
@@ -31,4 +32,12 @@ h5,
 h6 {
   margin: 0;
 }
+
+`;
+export const Container = styled.div`
+  padding: 20px;
+`;
+
+export const Title = styled.h2`
+  margin-bottom: 20px;
 `;
